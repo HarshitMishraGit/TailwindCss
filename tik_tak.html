@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./main.css">
+    <title>Tik_tak</title>
+</head>
+<body>
+    <div class="head bg-gray-400 font-mono mx-auto text-center text-white py-2">tik_tak</div>
+
+    <div class="main bg-orange-400 w-3/5 h-3/5 mx-auto mt-3 rounded-lg">
+    <div class="1line flex flex-row justify-center space-x-2 pt-20 ">
+        <button id="one" onclick="ClickMe(this.id)" class="bg-gray-700 w-[30%] h-20 hover:bg-gray-500 active:bg-gray-700 rounded-lg text-2xl text-white"></button>
+        <button id="two" onclick="ClickMe(this.id)" class="bg-gray-700 w-[30%] h-20 hover:bg-gray-500 active:bg-gray-700 rounded-lg text-2xl text-white"></button>
+        <button id="three" onclick="ClickMe(this.id)" class="bg-gray-700 w-[30%] h-20 hover:bg-gray-500 active:bg-gray-700 rounded-lg text-2xl text-white"></button>
+    </div>
+    <div class="2line flex flex-row justify-center space-x-2 mt-2">
+        <button id="four" onclick="ClickMe(this.id)" class="bg-gray-700 w-[30%] h-20 hover:bg-gray-500 active:bg-gray-700 rounded-lg text-2xl text-white"></button>
+        <button id="five" onclick="ClickMe(this.id)" class="bg-gray-700 w-[30%] h-20 hover:bg-gray-500 active:bg-gray-700 rounded-lg text-2xl text-white"></button>
+        <button id="six" onclick="ClickMe(this.id)" class="bg-gray-700 w-[30%] h-20 hover:bg-gray-500 active:bg-gray-700 rounded-lg text-2xl text-white"></button>
+    </div>
+    <div class="3line flex flex-row justify-center space-x-2 mt-2">
+        <button onclick="ClickMe(this.id)" id="seven" class="bg-gray-700 w-[30%] h-20 hover:bg-gray-500 active:bg-gray-700 rounded-lg text-2xl text-white "></button>
+        <button onclick="ClickMe(this.id)" id="eight" class="bg-gray-700 w-[30%] h-20 hover:bg-gray-500 active:bg-gray-700 rounded-lg text-2xl text-white "></button>
+        <button onclick="ClickMe(this.id)" id="nine" class="bg-gray-700 w-[30%] h-20 hover:bg-gray-500 active:bg-gray-700 rounded-lg text-2xl text-white "></button>
+    </div>
+        
+    </div>
+    <script>
+         let one=document.getElementById('one').textContent;
+         let two=document.getElementById('two').textContent;
+         let three=document.getElementById('three').textContent;
+         let four=document.getElementById('four').textContent;
+         let five=document.getElementById('five').textContent;
+         let six=document.getElementById('six').textContent;
+         let seven=document.getElementById('seven').textContent;
+         let eight=document.getElementById('eight').textContent;
+         let nine=document.getElementById('nine').textContent;
+        let i=0;
+        ClickMe=(clicked_id)=>{
+
+          
+            if(document.getElementById(clicked_id).innerText=='' && i==0){   
+                document.getElementById(clicked_id).textContent="X";
+                console.log(document.getElementById('one').textContent)
+                console.log(one);
+                i=1;
+
+            }
+            if(document.getElementById(clicked_id).innerText==''&&i==1)
+            {
+                document.getElementById(clicked_id).textContent="O";
+                i=0;
+            }
+            // console.log(one);
+            // if(one==two==three=="X"||four==five==six=="X"||seven==eight==nine=="X"||one==four==seven=="X"||two==five==eight=="X"||three==six==nine=="X"||one==five==nine=="X"||three==five==seven=="X"){
+            //     alert("X won");
+            //     console.log("X Won");
+            // }
+        }
+
+      
+           
+
+       
+    </script>
+</body>
+</html>
