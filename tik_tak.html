@@ -6,11 +6,38 @@
 <link rel="stylesheet" href="./main.css">
     <title>Tik_tak</title>
 </head>
-<body>
+<body class="bg-black">
     <div class="head bg-gray-400 font-mono mx-auto text-center text-white py-2">tik_tak</div>
 
+    <button onclick="StartGame()" class="start bg-blue-700 hover:bg-blue-500 active:bg-blue-700 text-white font-bold block mx-auto rounded-lg mt-4 py-2 px-5 active:px-3 active:py-1">Start The Game</button>
+
+    <!-- Mid Block Are Defining Which has three section  -->
+<div class="midblock flex flex-row h-full">
+    <!-- Crackers -->
+    <div class="crackers w-[20%] hidden" id="c1">
+        <!-- <img src="./revcrackers.png" alt="" class="w-Full h-1/2"> -->
+        <img src="./3q62.gif" alt="" class="h-full">
+    </div>
+    <!-- main body -->
+  
+
     <div class="main bg-orange-400 w-3/5 h-3/5 mx-auto mt-3 rounded-lg">
-    <div class="1line flex flex-row justify-center space-x-2 pt-20 ">
+        <!-- Players Name -->
+        <div id="players" class=" hidden player  flex-row space-x-3 justify-center pt-5 ">
+            <div class="flex flex-col w-[40%]">
+                
+            <div class="p1 rounded-lg text-blue-600 bg-gray-200 text-xl font-mono   h-8 px-5 py-1 shadow-lg shadow-black" id="p1" ></div>
+            <span class="text-sm pt-3 px-3 text-white bg-gray-500 bg-opacity-30 font-extrabold font-serif ">FIGHTER X</span>
+            </div>
+            <img src="./images/versus.svg" alt="" srcset="" class="w-10 h-10">
+            <div class="flex flex-col w-[40%]">
+                
+                <div class="p2 rounded-lg text-red-600 bg-gray-200 text-xl font-mono   h-8 px-5 py-1 shadow-lg shadow-black" id="p2" ></div>
+                <span class="text-sm pt-3 px-3 text-white bg-gray-500 bg-opacity-30 font-extrabold font-serif ">FIGHTER O</span>
+                </div>
+        </div>
+<!-- Players Name -->
+        <div class="1line flex flex-row justify-center space-x-2 pt-10 ">
         <button id="one" onclick="ClickMe(this.id)" class="bg-gray-700 w-[30%] h-20 hover:bg-gray-500 active:bg-gray-700 rounded-lg text-2xl text-white"></button>
         <button id="two" onclick="ClickMe(this.id)" class="bg-gray-700 w-[30%] h-20 hover:bg-gray-500 active:bg-gray-700 rounded-lg text-2xl text-white"></button>
         <button id="three" onclick="ClickMe(this.id)" class="bg-gray-700 w-[30%] h-20 hover:bg-gray-500 active:bg-gray-700 rounded-lg text-2xl text-white"></button>
@@ -25,43 +52,107 @@
         <button onclick="ClickMe(this.id)" id="eight" class="bg-gray-700 w-[30%] h-20 hover:bg-gray-500 active:bg-gray-700 rounded-lg text-2xl text-white "></button>
         <button onclick="ClickMe(this.id)" id="nine" class="bg-gray-700 w-[30%] h-20 hover:bg-gray-500 active:bg-gray-700 rounded-lg text-2xl text-white "></button>
     </div>
+    <div class="win rounded-lg text-red-600 bg-gray-200 text-xl font-mono   h-fit px-5 py-1 shadow-lg shadow-black w-4/5 mx-auto mt-3 hidden" id="win" ></div>
         
     </div>
+      <!-- Crackers -->
+      <div class="crackers w-[20%] hidden" id="c2">
+        <!-- <img src="./revcrackers.png" alt="" class="w-Full h-1/2"> -->
+        <img src="./V5w.gif" alt="" class="h-full">
+    </div>
+
+</div>
+      <!-- main block is Closing -->
     <script>
-         let one=document.getElementById('one').textContent;
-         let two=document.getElementById('two').textContent;
-         let three=document.getElementById('three').textContent;
-         let four=document.getElementById('four').textContent;
-         let five=document.getElementById('five').textContent;
-         let six=document.getElementById('six').textContent;
-         let seven=document.getElementById('seven').textContent;
-         let eight=document.getElementById('eight').textContent;
-         let nine=document.getElementById('nine').textContent;
+        // startGame Fxn
+        // All the fxn works inside this 
+        StartGame=()=>{
+         p1=prompt("Player1",)
+         p2=prompt("Player2")
+         document.getElementById('p1').innerHTML=p1;
+         document.getElementById('p2').innerHTML=p2;
+         document.getElementById('players').style.display="flex"
+       
+
+
+    //    Define all the keys
+    //    we can get the value of these keys by textContent attribute
+         let one=document.getElementById('one');
+         let two=document.getElementById('two');
+         let three=document.getElementById('three');
+         let four=document.getElementById('four');
+         let five=document.getElementById('five');
+         let six=document.getElementById('six');
+         let seven=document.getElementById('seven');
+         let eight=document.getElementById('eight');
+         let nine=document.getElementById('nine');
+        //  initiating counter to zero so each time after clickin the X we can print Y with the help of this Counter
         let i=0;
+        // we are passing this.id [parameter] within clickMe Function so that we know which key is being pressed
+        // and then we can simply change the value of that key from null to X or Y depending on counter value
         ClickMe=(clicked_id)=>{
 
           
             if(document.getElementById(clicked_id).innerText=='' && i==0){   
                 document.getElementById(clicked_id).textContent="X";
-                console.log(document.getElementById('one').textContent)
-                console.log(one);
+                
+                // console.log(one.textContent);
+                // Every Time I Press the button it will play a beep sound
+                var snd = new Audio('./button-4.mp3');
+                snd.play();
+                
+            //    after we print X on a key then it will update the counter value to 1
                 i=1;
 
             }
+            // the updated counter value make this to be run and print Y on the successive key-pressing
             if(document.getElementById(clicked_id).innerText==''&&i==1)
             {
                 document.getElementById(clicked_id).textContent="O";
                 i=0;
+                 // Every Time I Press the button it will play a beep sound
+                 var snd = new Audio('./button-3.mp3');
+                snd.play();
             }
             // console.log(one);
-            // if(one==two==three=="X"||four==five==six=="X"||seven==eight==nine=="X"||one==four==seven=="X"||two==five==eight=="X"||three==six==nine=="X"||one==five==nine=="X"||three==five==seven=="X"){
-            //     alert("X won");
-            //     console.log("X Won");
-            // }
-        }
+        //   we are checking for the possibilties in which X can win
+            if((one.textContent=="X"&&two.textContent=="X"&&three.textContent=="X")||(four.textContent=="X"&&five.textContent=="X"&&six.textContent=="X")||(seven.textContent=="X"&&eight.textContent=="X"&&nine.textContent=="X")||(one.textContent=="X"&&four.textContent=="X"&&seven.textContent=="X")||(two.textContent=="X"&&five.textContent=="X"&&eight.textContent=="X")||(three.textContent=="X"&&six.textContent=="X"&&nine.textContent=="X")||(one.textContent=="X"&&five.textContent=="X"&&nine.textContent=="X")||(three.textContent=="X"&&five.textContent=="X"&&seven.textContent=="X")){
+            //   this is to Showing crackers and playing the sound
+              document.getElementById('win').style.display="block";
+              document.getElementById('c1').style.display="block";
+              document.getElementById('c2').style.display="block";
+              document.getElementById('win').innerHTML=p1+" won With Fighter X";
+              var snd = new Audio('./victory.mp3');
+                snd.play();
 
-      
+                // console.log("X Won");
+                // It will Refresh The Page agter 5 Sec
+                t1 = window.setTimeout(function(){ window.location = "http://localhost:3000/tik_tak.html"; },5000);
+            }
+        //   we are checking for the possibilties in which O can win
+
+            else if((one.textContent=="O"&&two.textContent=="O"&&three.textContent=="O")||(four.textContent=="O"&&five.textContent=="O"&&six.textContent=="O")||(seven.textContent=="O"&&eight.textContent=="O"&&nine.textContent=="O")||(one.textContent=="O"&&four.textContent=="O"&&seven.textContent=="O")||(two.textContent=="O"&&five.textContent=="O"&&eight.textContent=="O")||(three.textContent=="O"&&six.textContent=="O"&&nine.textContent=="O")||(one.textContent=="O"&&five.textContent=="O"&&nine.textContent=="O")||(three.textContent=="O"&&five.textContent=="O"&&seven.textContent=="O")){
+                // alert(p2+" won With Fighter O");
+            //   this is to Showing crackers and playing the sound
+
+                document.getElementById('win').style.display="block";
+              document.getElementById('c1').style.display="block";
+              document.getElementById('c2').style.display="block";
+              document.getElementById('win').innerHTML=p2+" won With Fighter O";
+              var snd = new Audio('./victory.mp3');
+                snd.play();
+
+                //it will Refresh The page after 5 sec
+                t1 = window.setTimeout(function(){ window.location = "http://localhost:3000/tik_tak.html"; },5000);
+                
+            }
            
+          
+            
+        }
+        // Enf of ClickMe Fuc
+        
+        }
 
        
     </script>
